@@ -1,0 +1,72 @@
+<%@ Master Language="VB" CodeFile="Admin.master.vb" Inherits="Test" %>
+
+<%@ Register Src="~/Controls/PageBanner.ascx" TagPrefix="uc1" TagName="PageBanner" %>
+<%@ Register Src="~/Controls/GA.ascx" TagPrefix="uc1" TagName="GA" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>    
+</head>
+<body>
+    <uc1:PageBanner runat="server" ID="PageBanner" />
+    <form id="form1" runat="server">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td align="left">
+                <img src="images/odgers_logo.JPG" />
+            </td>
+            <td width="20">
+            </td>
+            <td class="Heading1">
+                Administration Portal
+            </td>
+            <td width="20">
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Welcome,
+                <asp:Label runat="server" ID="FullName"></asp:Label>
+                <asp:Button runat="server" ID="btnLogout" Text="Logout" CausesValidation="False" />
+            </td>
+            <td colspan="2">
+                Office:
+                <asp:Label runat="server" ID="OfficeName"></asp:Label>
+                <br />
+                <asp:Menu runat="server" ID="Menu2" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Assignments" NavigateUrl="Assignments.aspx"></asp:MenuItem>
+                        <asp:MenuItem Enabled="False" Text=" | "></asp:MenuItem>
+                        <asp:MenuItem Text="Search Candidates" NavigateUrl="Can_Search.aspx"></asp:MenuItem>
+                        <asp:MenuItem Enabled="False" Text=" | "></asp:MenuItem>
+                        <asp:MenuItem Text="View Billing" NavigateUrl="Billing.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                <asp:Menu runat="server" ID="Menu1" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Office Setup" NavigateUrl="Office_Manage.aspx"></asp:MenuItem>
+                        <asp:MenuItem Enabled="False" Text=" | "></asp:MenuItem>
+                        <asp:MenuItem Text="Admin Users" NavigateUrl="AdminUsers.aspx"></asp:MenuItem>
+                        <asp:MenuItem Enabled="False" Text=" | "></asp:MenuItem>
+                        <asp:MenuItem Text="Edit Emails" NavigateUrl="Emails_Edit.aspx"></asp:MenuItem>
+                        <asp:MenuItem Enabled="False" Text=" | "></asp:MenuItem>
+                        <asp:MenuItem Text="Load Hogan Codes" NavigateUrl="Hogan_UploadCodes.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </td>
+        </tr>
+    </table>
+    <hr style="color: black;" />
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+    <uc1:GA runat="server" ID="GA1" />
+
+</body>
+</html>

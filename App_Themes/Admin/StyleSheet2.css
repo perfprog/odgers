@@ -1,0 +1,120 @@
+﻿body
+{
+    font-family: Verdana;
+    font-size: small;
+    color: navy;
+}
+
+.box
+{
+    border-bottom-color:Silver;
+    border-top-color:Silver;
+    border-left-color:Silver;
+    border-right-color:Silver;
+    border-top-width:1px;
+    border-bottom-width:1px;
+    border-right-width:1px;
+    border-left-width:1px;
+    font-weight:bold;
+    border-style:solid;
+}
+
+.disabled
+{
+    border-color:white;
+    border-width:0px;
+    text-align:right;
+}
+
+.btn
+{
+    background-color:#B5C7DE;
+    font-weight:bold;
+    color:navy;
+}
+
+.note 
+{
+    background-color: #FFFFCC;
+    padding:10px;
+    border:solid 1px #0090FE;
+}
+
+.Heading1
+{
+    font-size:medium;
+    font-weight:bold;
+}
+.Section
+{
+    font-weight: bold;
+    font-size: small;
+    font-family: Arial;
+    background-color: #B5C7DE;
+    text-align: center;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.info
+{
+    color: #006699;
+}
+
+.altrow 
+{
+    background-color:#FFFFCC;
+}
+.error
+{
+    color:Red;
+}
+.footer 
+{
+    font-size:xx-small;
+}
+.small
+{
+    FONT-SIZE: x-small;
+    FONT-FAMILY: Verdana
+}
+
+.headrow 
+{
+    background-color:Silver;
+}
+
+.selrow 
+{
+    background-color:#FFCC99;
+}
+
+.footrow 
+{
+    background-color:#DDDDDD;
+}
+
+
+a:active
+{
+    color:Green;
+}
+
+
+a:hover
+{
+    color:Green;
+    background-color:Yellow;
+}
+
+a:link
+{
+    color:Green;
+}
+
+a:visited
+{
+    color:Green;
+}

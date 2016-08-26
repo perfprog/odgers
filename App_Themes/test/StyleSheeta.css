@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.h1
+{
+    color: #0000FF;
+    font-family: "Cambria";
+    font-weight: "Regular";
+    font-size: 28pt;
+    line-height: 28pt;
+}
+
+.h2
+{
+    color: #00aeef;
+    font-family: "Lucida Sans";
+    font-weight: bold;
+    font-size: 22pt;
+    line-height: 20pt;
+    margin-bottom: 18pt;
+}

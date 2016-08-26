@@ -1,0 +1,91 @@
+Imports Microsoft.VisualBasic
+
+Public Class ReportLog
+    Public Shared Sub Files_Scan(sFolderName As String)
+        'Dim sFolderName As String
+        Dim files() As System.IO.FileSystemInfo, sSql As String
+        Dim di As System.IO.DirectoryInfo, i1 As Integer
+        Dim dv As System.Data.DataView, sMessage As String
+        Dim dStartdate As Date, bSent As Boolean
+
+        'Get StartDate
+        dv = CF.DataView_Get("Select Top 1 EmailDate as StartDate from ReportLog order by RecordID Desc")
+        dStartdate = dv.Table.Rows(0)("StartDate")
+        dStartdate = dStartdate.AddSeconds(1)
+        Debug_Show(dStartdate)
+
+        'Get Files
+        di = New System.IO.DirectoryInfo(sFolderName)
+        files = di.GetFileSystemInfos("*.pdf")
+
+        Array.Sort(files, New DateComparer)
+        bSent = False
+        For i1 = 0 To files.Length - 1
+            If DateDiff(DateInterval.Second, dStartdate, files(i1).LastWriteTime) > 10 Then
+                Debug_Show(files(i1).FullName & ">>" & files(i1).LastWriteTime)
+
+                'Get Email Address
+                dv = NotifyInfo_Get(files(i1).FullName)
+
+                'Make an entry in the ReportLog and Send email message
+                If dv.Table.Rows.Count <> 0 Then
+                    sSql = "Insert into ReportLog(ReportFileName, ReportDate, EmailAddress) Select"
+                    sSql = sSql & "'" & Replace(CF.FileName_Get(files(i1).FullName), "'", "''") & "'"
+                    sSql = sSql & ", '" & files(i1).LastWriteTime & "'"
+                    sSql = sSql & ", '" & Replace(CF.NullToString(dv.Table.Rows(0)("AdminEmailAddress")), "'", "''") & "'"
+                    Debug_Show(sSql)
+                    CF.Runquery(sSql)
+
+                    sMessage = "Assignment: " & dv.Table.Rows(0)("AssgnName")
+                    sMessage &= "<br>" & "Candidate: " & dv.Table.Rows(0)("CandidateName")
+                    sMessage &= "<br>" & "Office: " & dv.Table.Rows(0)("OfficeName")
+                    sMessage &= "<br>" & "-- End --"
+                    Debug_Show(sMessage)
+
+                    CF.Email_Send("odgers@perfprog.com", dv.Table.Rows(0)("AdminEmailAddress"), "", "Report Generated for " & dv.Table.Rows(0)("CandidateName"), sMessage)
+                    'CF.Email_Send("odgers@perfprog.com", "", "", "Report Generated for " & dv.Table.Rows(0)("CandidateName"), sMessage)
+
+                    bSent = True
+                End If
+            End If
+        Next
+
+        If Not bSent Then
+            CF.Email_Send("odgers@perfprog.com", "", "", "No new Odgers reports were found", "-- end--")
+            Exit Sub
+        End If
+    End Sub
+
+    Public Shared Sub Debug_Show(ByVal s1 As String)
+        System.Web.HttpContext.Current.Trace.Warn(s1)
+    End Sub
+
+    Public Shared Function NotifyInfo_Get(ByVal sFileName As String) As System.Data.DataView
+        Dim sJustFileName As String, sHoganUserName As String
+
+        sJustFileName = CF.FileName_Get(sFileName)
+        If InStr(sJustFileName, "-") = 0 Then
+            NotifyInfo_Get = CF.DataView_Get("Select Top 1 LanguageID from Languages where LanguageID=-1")
+        Else
+            sHoganUserName = Left(sJustFileName, InStr(sJustFileName, "-") - 1)
+            NotifyInfo_Get = CF.DataView_Get("Select Top 1 AdminEmailAddress, AssgnName, CandidateName, officeName from qryAssgnCandidates where HoganUserName='" & Replace(sHoganUserName, "'", "''") & "' order by EmailDate Desc")
+        End If
+
+    End Function
+
+    Public Class DateComparer
+        Implements System.Collections.IComparer
+
+        Public Function Compare(ByVal info1 As Object, ByVal info2 As Object) As Integer Implements System.Collections.IComparer.Compare
+            Dim FileInfo1 As System.IO.FileInfo = DirectCast(info1, System.IO.FileInfo)
+            Dim FileInfo2 As System.IO.FileInfo = DirectCast(info2, System.IO.FileInfo)
+
+            Dim Date1 As DateTime = FileInfo1.LastWriteTime
+            Dim Date2 As DateTime = FileInfo2.LastWriteTime
+
+            If Date1 > Date2 Then Return -1
+            If Date1 < Date2 Then Return 1
+            Return 0
+        End Function
+    End Class
+End Class

@@ -1,0 +1,57 @@
+<%@ Master Language="VB" CodeFile="Lang.master.vb" Inherits="Lang_Lang" %>
+<%@ Register Src="~/Controls/GA.ascx" TagPrefix="uc1" TagName="GA" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+     <script src="charsleft.js" type="text/javascript" language=javascript></script>    
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+            <td align="left">
+                <img src="../images/odgers_logo.JPG" />
+            </td>
+            <td width="20">
+            </td>
+            <td class="Section">
+                Translation Administration System
+                <br />
+                <br />
+                Current language:
+                <asp:Label runat="server" ID="LanguageName" ForeColor="Maroon" Font-Bold="True"></asp:Label>
+            </td>
+            <td width="20">
+            </td>
+            <td valign="bottom">
+                <asp:DropDownList runat="server" ID="TableName" AutoPostBack="True">
+                    <asp:ListItem Text="Logout" Value="default.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Leaderfit+Hogan Scale Definitions" Value="LF_Hogan_Scales.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Leaderfit STATIC Text" Value="LFStatic.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Leaderfit DYNAMIC Text" Value="LFDynamic.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Hogan Scales" Value="HoganScales.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Hogan *HPI* Subscales" Value="HoganSubscales_HPI.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Hogan *HDS* Subscales" Value="HoganSubscales_HDS.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Odgers HDS" Value="OdgersText_HDS.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Odgers HPI" Value="OdgersText_HPI.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Odgers MVPI" Value="OdgersText_MVPI.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Report Labels" Value="ReportText.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Text for Emailing Reports" Value="EmailReports.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Search" Value="Search.aspx"></asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+    </table>
+    <hr style="color: black;" />
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+    <uc1:GA runat="server" ID="GA1" />
+
+</body>
+</html>

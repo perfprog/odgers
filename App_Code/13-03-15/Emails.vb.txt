@@ -1,0 +1,27 @@
+﻿Imports Microsoft.VisualBasic
+
+Public Class Emails
+    Public Shared Sub relayEmail_Send(ByVal sFrom As String, ByVal sTo As String, ByVal sCC As String, ByVal sSubject As String, ByVal sBody As String)
+        Dim MailFrom As System.Net.Mail.MailAddress
+        Dim MailObj As New System.Net.Mail.MailMessage
+        Dim a1() As String, i1 As Integer
+
+        a1 = Split(sFrom, ";")
+        MailFrom = New System.Net.Mail.MailAddress(Trim(a1(0)))
+
+        MailObj.From = MailFrom
+        MailObj.To.Add(sTo)
+        MailObj.Bcc.Add(ConfigurationManager.AppSettings("bcc"))
+        MailObj.Subject = sSubject
+        MailObj.SubjectEncoding = System.Text.Encoding.UTF8
+
+        MailObj.Body = sBody
+        MailObj.IsBodyHtml = True
+        MailObj.BodyEncoding = System.Text.Encoding.UTF8
+
+
+        Dim smtp As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient("localhost") 'smtp.nerdsintheknow.com
+        smtp.Send(MailObj)
+
+    End Sub
+End Class

@@ -1,0 +1,261 @@
+/* COLOURS
+   ----------------------------------
+
+   Cyan:			#00aeef;
+   Orange:			#f78e1e;
+   Dark Blue:		#003d79;
+
+*/
+
+/* HEADINGS
+   ---------------------------------- */
+
+/* Heading 1 */
+h1 {
+	color: white;
+	font-family: "Cambria";
+	font-weight: "Regular";
+	font-size: 28pt;
+	line-height: 28pt;
+}
+
+/* Heading 2 */
+h2 {
+	color: #00aeef;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 22pt;
+	line-height: 20pt;
+	margin-bottom: 18pt;
+}
+
+/* Heading 3 */
+h3 {
+	color: #00aeef;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 12pt;
+	line-height: 12pt;
+	margin-top: 9pt;
+	margin-bottom: 6pt;
+}
+
+/* Heading 4 */
+h4 {
+	color: #f78e1e;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 9.5pt;
+	line-height: 12pt;
+	margin-top: 2pt;
+	margin-bottom: 2pt;
+}
+
+/* Heading 5 */
+h5 {
+	color: #f78e1e;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+	line-height: 10pt;
+	margin-top: 2pt;
+	margin-bottom: 3pt;
+}
+
+/* BODY COPY & LISTS
+   ---------------------------------- */
+
+/* Body Copy */
+p {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Regular";
+	font-size: 9.5pt;
+	line-height: 12pt;
+	margin-bottom: 6pt;
+}
+
+/* Blockquote */
+blockquote {
+	color: #f78e1e;
+	font-family: "Cambria";
+	font-weight: "Regular";
+	font-size: 16pt;
+	line-height: 20pt;
+	margin-bottom: 12pt;	
+}
+
+/* Bullets - Small */
+ul {
+	list-style: square;
+}
+	ul li {
+		color: black;
+		font-family: "Lucida Sans";
+		font-weight: "Regular";
+		font-size: 8pt;
+		line-height: 10pt;
+		margin-bottom: 3pt;
+	}
+	
+/* Bullets - Large */
+	ul li.large {
+		font-size: 9.5pt;
+		line-height: 12pt;
+	}
+
+/* Caption/Notes */
+.notes {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Regular";
+	font-size: 7pt;
+	line-height: 9pt;
+	margin-bottom: 6pt;
+}
+
+/* TITLE PAGE
+   ---------------------------------- */
+
+/* Company Name */
+.companyname {
+	color: #f78e1e;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 12.5pt;
+	text-transform: uppercase;
+	margin-top: 9pt;
+	margin-bottom: 3pt;
+}
+
+/* Title Page Block */
+.titlepageblock {
+	color: #003d79;
+	font-family: "Cambria";
+	font-weight: "Regular";
+	font-size: 14pt;
+	line-height: 20pt;
+}
+
+/* HEADER
+   ---------------------------------- */
+
+/* Logo */
+.logo {
+	color: #003d79;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+	line-height: 10pt;
+}
+
+/* Title */
+.title {
+	color: #003d79;
+	font-family: "Lucida Sans";
+	font-weight: "Regular";
+	font-size: 8pt;
+	line-height: 10pt;
+}
+
+/* Candidate */
+.candidate {
+	color: #00aeef;
+	font-family: "Lucida Sans";
+	font-weight: "Regular";
+	font-size: 8pt;
+	line-height: 10pt;
+}
+
+/* FOOTER
+   ---------------------------------- */
+
+/* Footer Text */
+.footertext {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+}
+
+/* Folio */
+.folio {
+	color: #003d79;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+}
+
+/* Private & Confidential Block */
+.privacy {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Regular";
+	font-size: 6pt;
+	line-height: 7pt;
+}
+
+/* INFOGRAPHIC
+   ---------------------------------- */
+
+/* Outer Items */
+.infographicouteritems {
+	color: white;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 13pt;
+	text-transform: uppercase;
+}
+
+/* Inner Items */
+.infographicinneritems {
+	color: #003d79;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 16pt;
+	line-height: 17pt;
+	text-transform: uppercase;
+}
+
+/* TABLES
+   ---------------------------------- */
+
+/* Title Bar */
+.tabletitlebar {
+	color: white;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+	text-transform: uppercase;
+}
+
+/* Table Horizontal Values */
+.tablehorizontalvalue {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+}
+
+/* Left Column */
+.tableleftcolumn {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 8pt;
+	line-height: 10pt;
+}
+
+/* Column Numbers */
+	.tableleftcolumn span {
+		font-weight: "Regular";
+	}
+
+/* Table Horizontal Titles */
+.tablehorizontaltitles {
+	color: black;
+	font-family: "Lucida Sans";
+	font-weight: "Demibold Roman";
+	font-size: 5.5pt;
+	text-transform: uppercase;
+}

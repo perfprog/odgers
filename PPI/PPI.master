@@ -1,0 +1,22 @@
+<%@ Master Language="VB" CodeFile="PPI.master.vb" Inherits="PPI_PPI" %>
+<%@ Register Src="~/Controls/GA.ascx" TagPrefix="uc1" TagName="GA" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <img src="../images/odgers_logo.JPG" /> <font size=large>PPI In-House Admin</font>
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    </form>
+
+    <uc1:GA runat="server" ID="GA1" />
+    
+</body>
+</html>

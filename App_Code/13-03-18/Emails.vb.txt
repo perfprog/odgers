@@ -1,0 +1,47 @@
+﻿Imports Microsoft.VisualBasic
+
+Public Class Emails
+    Public Shared Sub relayEmail_Send(ByVal sFrom As String, ByVal sTo As String, ByVal sCC As String, ByVal sSubject As String, ByVal sBody As String)
+        Dim MailFrom As System.Net.Mail.MailAddress
+        Dim MailObj As New System.Net.Mail.MailMessage
+        Dim a1() As String, i1 As Integer
+
+        a1 = Split(sFrom, ";")
+        MailFrom = New System.Net.Mail.MailAddress(Trim(a1(0)))
+        System.Web.HttpContext.Current.Trace.Warn("Mailfrom set to " & Trim(a1(0)))
+
+        MailObj.From = MailFrom
+        MailObj.To.Add(sTo)
+        System.Web.HttpContext.Current.Trace.Warn("MailTo set to " & sTo)
+
+        MailObj.Bcc.Add(ConfigurationManager.AppSettings("bcc"))
+        System.Web.HttpContext.Current.Trace.Warn("Bcc set to " & ConfigurationManager.AppSettings("bcc"))
+
+        MailObj.Subject = sSubject
+        MailObj.SubjectEncoding = System.Text.Encoding.UTF8
+        System.Web.HttpContext.Current.Trace.Warn("Subject set to " & sSubject)
+
+        MailObj.Body = sBody
+        MailObj.IsBodyHtml = True
+        MailObj.BodyEncoding = System.Text.Encoding.UTF8
+        System.Web.HttpContext.Current.Trace.Warn("Body set to " & sBody)
+
+        Dim smtp As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient("localhost") 'smtp.nerdsintheknow.com
+        System.Web.HttpContext.Current.Trace.Warn("SMTP Client Created ")
+        'smtp.Send(MailObj)
+
+        Try
+            smtp.Send(MailObj)
+        Catch e As System.Data.SqlClient.SqlException
+
+            CF.Email_Send("odgers@perfprog.com", "", "", "odgers Error", " Errors: " & e.ToString)
+        Catch e As System.Exception
+
+            CF.Email_Send("odgers@perfprog.com", "", "", "odgers Error", " Errors: " & e.ToString)
+        Finally
+            CF.Email_Send("odgers@perfprog.com", "", "", "odgers Update", "Email sent to " & sTo)
+
+        End Try
+
+    End Sub
+End Class
